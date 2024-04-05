@@ -1,17 +1,22 @@
 import numpy as np
 
 np.random.seed(1337)  # for reproducibility
-from sklearn.datasets import load_boston
+#from sklearn.datasets import load_boston
 from sklearn.model_selection import train_test_split
-from sklearn.metrics.regression import r2_score, mean_squared_error
+from sklearn.metrics import r2_score, mean_squared_error
 from sklearn.preprocessing import MinMaxScaler
 
 from dbn.tensorflow import SupervisedDBNRegression
 
+data_url = "http://lib.stat.cmu.edu/datasets/boston"
+raw_df = pd.read_csv(data_url, sep="\s+", skiprows=22, header=None)
+data = np.hstack([raw_df.values[::2, :], raw_df.values[1::2, :2]])
+target = raw_df.values[1::2, 2]
 
 # Loading dataset
-boston = load_boston()
-X, Y = boston.data, boston.target
+#boston = load_boston()
+#X, Y = boston.data, boston.target
+X, Y = data, target
 
 # Splitting data
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=1337)
