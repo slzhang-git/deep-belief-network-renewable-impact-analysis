@@ -39,3 +39,14 @@ regressor.fit(X_train, Y_train)
 X_test = min_max_scaler.transform(X_test)
 Y_pred = regressor.predict(X_test)
 print('Done.\nR-squared: %f\nMSE: %f' % (r2_score(Y_test, Y_pred), mean_squared_error(Y_test, Y_pred)))
+
+plt.plot(list(Y_test), label='groundtruth-test')
+plt.plot(list(Y_pred), label='predict-test')
+plt.xlabel('data samples')
+plt.ylabel('output')
+plt.legend()
+plot_title = 'comparison between predicted and groundtruth output' #+ appliance_name + ', model: ' + args.cnn + '. Running time: ' + str(running_time) + ' seconds'
+
+plt.title(plot_title)
+plt.show()
+plt.savefig('result.jpg')
