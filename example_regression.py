@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 np.random.seed(1337)  # for reproducibility
 #from sklearn.datasets import load_boston
