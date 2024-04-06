@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 np.random.seed(1337)  # for reproducibility
 #from sklearn.datasets import load_boston
